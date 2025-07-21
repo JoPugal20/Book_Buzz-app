@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "bookstore",
-    "slug": "bookstore",
+    "name": "Book-Buzz📙",
+    "slug": "Book-Buzz📙",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -34,7 +34,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

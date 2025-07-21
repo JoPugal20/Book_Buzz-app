@@ -63,27 +63,37 @@ login: async (email, password) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: JSON.stringify({ email, password }),
     });
 
-     const data = await response.json();
+    // Read as text first
+    const text = await response.text();
 
-  if (!response.ok) throw new Error(data.message || "Something went wrong");
+    if (!text) {
+      throw new Error('Server returned empty response.');
+    }
 
-  await AsyncStorage.setItem("user", JSON.stringify(data.user));
-  await AsyncStorage.setItem("token", data.token);
+    let data;
+    try {
+      data = JSON.parse(text); // Parse manually
+    } catch (parseError) {
+      throw new Error('Invalid JSON from server.');
+    }
 
-  set({ token: data.token, user: data.user, isLoading: false });
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
 
-return { success: true };
-} catch (error) {
-  set({ isLoading: false });
-  return { success: false, error: error.message };
-}
+    await AsyncStorage.setItem("user", JSON.stringify(data.user));
+    await AsyncStorage.setItem("token", data.token);
 
+    set({ token: data.token, user: data.user, isLoading: false });
+
+    return { success: true };
+  } catch (error) {
+    set({ isLoading: false });
+    return { success: false, error: error.message };
+  }
 },
 
 
