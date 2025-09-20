@@ -2,8 +2,6 @@
 
 Welcome to **BookBuzz**, a vibrant mobile app that brings community-powered book recommendations right to your fingertips. Find your next favorite read, share reviews, and connect with fellow book lovers!
 
-![BookBuzz Home](Home.jpg)
-
 ---
 
 ## 🌟 Features
