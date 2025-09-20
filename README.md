@@ -37,7 +37,7 @@ Welcome to **BookBuzz**, a vibrant mobile app that brings community-powered book
 
 ### Installation
 
-git clone https://github.com/yourusername/bookbuzz.git
+git clone (https://github.com/JoPugal20/Book_Buzz-app)
 cd bookbuzz
 npm install
 
